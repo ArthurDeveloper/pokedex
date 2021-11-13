@@ -1,5 +1,5 @@
 async function getPokemonCount() {
-    const count = await fetch('http://localhost:3000/pokemons/count')
+    const count = await fetch('https://flask-pokeapi-pokedex.herokuapp.com/pokemons/count')
                     .then((res) => res.json())
                     .then((json) => json.count);
 
@@ -21,7 +21,7 @@ async function changePage(pageNumber) {
 }
 
 async function getPokemons(rangeStart, rangeEnd) {
-    const url = `http://localhost:3000/pokemons/get?start=${rangeStart}&end=${rangeEnd}`;
+    const url = `https://flask-pokeapi-pokedex.herokuapp.com/pokemons/get?start=${rangeStart}&end=${rangeEnd}`;
     const pokemons = await fetch(url)
                         .then((res) => res.json())
                         .then((json) => json.results);
