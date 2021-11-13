@@ -3,9 +3,7 @@ import requests
 
 class PokemonController:
     def index():
-        req = requests.get('http://localhost:3000/pokemons/get?start=0&end=15')
-        pokemons = req.json()['results']
-        return render_template('pokemons.html', pokemons = pokemons)
+        return render_template('pokemons.html')
 
     def getRange():
         start, end = request.args.get('start'), request.args.get('end')
@@ -13,6 +11,10 @@ class PokemonController:
 
         pokemons = requests.get(url).json()
         
-        return { 
-            'results': pokemons['results']
+        return pokemons
+
+    def count():
+        data = requests.get('https://pokeapi.co/api/v2/pokemon?limit=1').json()
+        return {
+            'count': data['count']
         }
