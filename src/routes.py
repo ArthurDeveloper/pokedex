@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.PokemonController import PokemonController
+from .controllers.PokemonController import PokemonController
 
 pokemon_bp = Blueprint('pokemon_bp', __name__)
 
