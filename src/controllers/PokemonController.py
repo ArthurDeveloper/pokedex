@@ -5,6 +5,10 @@ class PokemonController:
     def index():
         return render_template('pokemons.html')
 
+    def get(name):
+        pokemon_info = requests.get(f'https://pokeapi.co/api/v2/pokemon/{name}').json()
+        return pokemon_info
+
     def getRange():
         start, end = request.args.get('start'), request.args.get('end')
         url = f'https://pokeapi.co/api/v2/pokemon?limit={end}&offset={start}'
